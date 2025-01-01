@@ -18,7 +18,6 @@ async function fetchPageData(slug) {
       }
     }
   `;
-  console.log("PAGE_QUERY", PAGE_QUERY);
   const variables = {
     slug,
   };
@@ -28,9 +27,6 @@ async function fetchPageData(slug) {
       query: PAGE_QUERY,
       variables,
     });
-
-    console.log("result", result);
-
     return result.data.page;
   } catch (error) {
     console.error("Error fetching page data:", error);
@@ -38,4 +34,26 @@ async function fetchPageData(slug) {
   }
 }
 
-module.exports = fetchPageData;
+
+/**
+ * Fetch data for a specific page by its slug
+ *
+ * @param {string} slug - The slug of the page.
+ * @returns {Object} - Page data with a simplified structure.
+ */
+async function getAllData(slug = '') {
+    try {
+      const rawData = await fetchPageData(slug);
+      return {
+        title: rawData?.title || '',
+        content: rawData?.content || '',
+        slug: rawData?.slug || '',
+      };
+    } catch (error) {
+      console.error("Error in getAllData:", error);
+      throw new Error("Failed to get all data");
+    }
+  }
+  
+  module.exports = getAllData;
+  

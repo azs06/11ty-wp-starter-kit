@@ -1,4 +1,4 @@
-const getAllData = require('../../scripts/http/get-page-data.cjs');
+const getAllData = require('../../scripts/http/page.cjs');
 
 module.exports = async () => {
   const pageData = await getAllData('/sample-post');
