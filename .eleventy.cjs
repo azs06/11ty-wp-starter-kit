@@ -1,6 +1,7 @@
 'use strict';
 
 const htmlmin = require('html-minifier');
+
 module.exports = function(eleventyConfig) {
     eleventyConfig.addNunjucksShortcode('access', function(array, index) {
         return array[index];
