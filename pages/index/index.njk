@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagename: index
+meta_title: "{{ title | safe }}"
+permalink: "build/index.html"
+permalinkBypassOutputDir: true
+nickname: "You Thing"
+---
+
+<section>
+  <h1>{{ title | safe }}</h1>
+  <article>
+    {{ content | safe }}
+  </article>
+</section>

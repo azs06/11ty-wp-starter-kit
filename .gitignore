@@ -1,0 +1,8 @@
+**/build/**
+**/images/.DS_Store
+.DS_Store
+**/node_modules/**
+.env
+.env.prod
+.env.dev
+.env.stage
