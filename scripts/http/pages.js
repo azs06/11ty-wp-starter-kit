@@ -1,5 +1,5 @@
-const Client = require("./apollo.cjs");
-const { gql } = require("@apollo/client/core");
+import Client from "./apollo.js";
+import { gql } from "@apollo/client/core/core.cjs";
 
 /**
  * Fetch page/post data from WordPress
@@ -18,9 +18,7 @@ async function fetchPageData(slug) {
       }
     }
   `;
-  const variables = {
-    slug,
-  };
+  const variables = { slug };
 
   try {
     const result = await Client.query({
@@ -34,26 +32,24 @@ async function fetchPageData(slug) {
   }
 }
 
-
 /**
  * Fetch data for a specific page by its slug
  *
  * @param {string} slug - The slug of the page.
  * @returns {Object} - Page data with a simplified structure.
  */
-async function getAllData(slug = '') {
-    try {
-      const rawData = await fetchPageData(slug);
-      return {
-        title: rawData?.title || '',
-        content: rawData?.content || '',
-        slug: rawData?.slug || '',
-      };
-    } catch (error) {
-      console.error("Error in getAllData:", error);
-      throw new Error("Failed to get all data");
-    }
+export async function getAllData(slug = '') {
+  try {
+    const rawData = await fetchPageData(slug);
+    return {
+      title: rawData?.title || '',
+      content: rawData?.content || '',
+      slug: rawData?.slug || '',
+    };
+  } catch (error) {
+    console.error("Error in getAllData:", error);
+    throw new Error("Failed to get all data");
   }
-  
-  module.exports = getAllData;
-  
+}
+
+export default getAllData;

@@ -1,6 +1,9 @@
-const { ApolloClient, createHttpLink, InMemoryCache } = require('@apollo/client/core');
-const fetch = require('cross-fetch');
-require('dotenv').config();
+import { ApolloClient,  InMemoryCache } from '@apollo/client/core/core.cjs';
+import { createHttpLink } from '@apollo/client/link/http/http.cjs';
+import fetch from 'cross-fetch';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /* WordPress GraphQL URL */
 const BASE_URI = process.env.WORDPRESS_GRAPHQL_URL;
@@ -27,4 +30,4 @@ const Client = new ApolloClient({
   defaultOptions,
 });
 
-module.exports = Client;
+export default Client;
