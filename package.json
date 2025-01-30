@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "start": "npx @11ty/eleventy --serve --quiet"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "@apollo/client": "^3.12.4",
     "cross-env": "^7.0.3",
     "cross-fetch": "^4.1.0",
+    "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
     "html-minifier": "^4.0.0"
   },
