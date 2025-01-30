@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagename: sample-page
+meta_title: "{{ title | safe }}"
+permalink: "build/sample-page/index.html"
+permalinkBypassOutputDir: true
+nickname: "You Thing"
+---
+
+<section>
+  <h1>{{ title | safe }}</h1>
+  <article>
+    {{ pageData | safe }}
+  </article>
+</section>

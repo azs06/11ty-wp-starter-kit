@@ -8,8 +8,16 @@ nickname: "You Thing"
 ---
 
 <section>
-  <h1>{{ title | safe }}</h1>
   <article>
-    {{ pageData | safe }}
+<h1>Posts</h1>
+<ul>
+{% for post in posts %}
+  <li>
+   <a href="posts/{{pos.slug}}"> {{ post.title }}</a>
+    </li>
+{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
+</ul>
   </article>
 </section>

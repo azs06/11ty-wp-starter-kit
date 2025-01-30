@@ -9,8 +9,8 @@ import { gql } from "@apollo/client/core/core.cjs";
  */
 async function fetchPageData(slug) {
   const PAGE_QUERY = gql`
-    query GetPostsEdges {
-      page(id: "sample-page", idType: URI) {
+    query GetPostsEdges($slug: ID!) {
+      page(id: $slug, idType: URI) {
         id
         content
         slug
@@ -19,7 +19,6 @@ async function fetchPageData(slug) {
     }
   `;
   const variables = { slug };
-
   try {
     const result = await Client.query({
       query: PAGE_QUERY,

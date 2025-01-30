@@ -1,9 +1,9 @@
-import getAllData from "../../scripts/http/pages.js";
+import { getAllPostsData } from "../../scripts/http/posts.js";
 
 export default async () => {
-  const pageData = await getAllData("/sample-post");
+  const data = await getAllPostsData({ type: "index" });
+  const posts = data.posts;
   return {
-    title: pageData.title || "Default Title",
-    pageData: pageData.content || "<p>Default Content</p>",
+    posts: posts || [],
   };
 };
